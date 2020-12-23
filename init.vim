@@ -35,7 +35,7 @@ set autochdir
 " ===
 set number
 set relativenumber
-"set cursorline
+set cursorline
 set noexpandtab
 set tabstop=2
 set shiftwidth=2
@@ -161,7 +161,7 @@ noremap <silent> <LEADER>o za
 
 " Open up lazygit
 noremap \g :Git 
-noremap <c-g> :tabe<CR>:-tabmove<CR>:term lazygit<CR>
+"noremap <c-g> :tabe<CR>:-tabmove<CR>:term lazygit<CR>
 nnoremap <c-n> :tabe<CR>:-tabmove<CR>:term lazynpm<CR>
 
 
@@ -418,7 +418,7 @@ Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'wellle/tmux-complete.vim'
 
 " Snippets
-Plug 'SirVer/ultisnips'
+"Plug 'SirVer/ultisnips'
 "Plug 'theniceboy/vim-snippets'
 Plug 'honza/vim-snippets'
 
@@ -645,7 +645,10 @@ let g:coc_global_extensions = [
   \ 'coc-vimlsp',
   \ 'coc-vimlsp',
   \ 'coc-yaml',
-  \ 'coc-yank']
+  \ 'coc-yank',
+	\ 'coc-marketplace']
+
+
 "set statusline^=%{coc#status()}%{get(b:,'coc_current_function','')}
 "nmap <silent> <TAB> <Plug>(coc-range-select)
 "xmap <silent> <TAB> <Plug>(coc-range-select)
@@ -676,6 +679,26 @@ function! Show_documentation()
 endfunction
 nnoremap <LEADER>h :call Show_documentation()<CR>
 " autocmd CursorHold * silent call CocActionAsync('highlight')
+
+" Having longer updatetime (default is 4000 ms = 4 s) leads to noticeable
+" delays and poor user experience.
+set updatetime=100
+
+" Don't pass messages to |ins-completion-menu|.
+set shortmess+=c
+
+set hidden
+
+" Always show the signcolumn, otherwise it would shift the text each time
+" diagnostics appear/become resolved.
+if has("patch-8.1.1564")
+  " Recently vim can merge signcolumn and number column into one
+  set signcolumn=number
+else
+  set signcolumn=yes
+endif
+
+
 
 
 " Open up coc-commands
@@ -708,12 +731,12 @@ nnoremap <leader>tu :CocCommand todolist.download<CR>:CocCommand todolist.upload
 " coc-tasks
 noremap <silent> <leader>ts :CocList tasks<CR>
 " coc-snippets
-imap <C-l> <Plug>(coc-snippets-expand)
+"imap <C-l> <Plug>(coc-snippets-expand)
 vmap <C-e> <Plug>(coc-snippets-select)
 let g:coc_snippet_next = '<c-e>'
 let g:coc_snippet_prev = '<c-n>'
 imap <C-e> <Plug>(coc-snippets-expand-jump)
-let g:snips_author = 'David'
+let g:snips_author = 'Jiageng'
 
 nmap <silent> <LEADER>- <Plug>(coc-diagnostic-prev)
 nmap <silent> <LEADER>= <Plug>(coc-diagnostic-next)
@@ -764,7 +787,7 @@ noremap <C-p> :Files<CR>
 noremap <C-f> :Rg<CR>
 noremap <C-h> :History<CR>
 "noremap <C-t> :BTags<CR>
-noremap <C-l> :Lines<CR>
+"noremap <C-l> :Lines<CR>
 noremap <C-w> :Buffers<CR>
 noremap <leader>; :History:<CR>
 
@@ -939,10 +962,10 @@ noremap <LEADER>gi :FzfGitignore<CR>
 " ===
 let g:tex_flavor = "xelatex"
 " inoremap <c-n> <nop>
-let g:UltiSnipsExpandTrigger="<c-e>"
-let g:UltiSnipsJumpForwardTrigger="<c-e>"
-let g:UltiSnipsJumpBackwardTrigger="<c-n>"
-let g:UltiSnipsSnippetDirectories = [$HOME.'/.config/nvim/Ultisnips/', $HOME.'/.config/nvim/plugged/vim-snippets/UltiSnips/']
+"let g:UltiSnipsExpandTrigger="<c-e>"
+"let g:UltiSnipsJumpForwardTrigger="<c-e>"
+"let g:UltiSnipsJumpBackwardTrigger="<c-n>"
+"let g:UltiSnipsSnippetDirectories = [$HOME.'/.config/nvim/Ultisnips/', $HOME.'/.config/nvim/plugged/vim-snippets/UltiSnips/']
 " silent! au BufEnter,BufRead,BufNewFile * silent! unmap <c-r>
 " " Solve extreme insert-mode lag on macOS (by disabling autotrigger)
 " augroup ultisnips_no_auto_expansion
