@@ -270,9 +270,9 @@ framexleftmargin=2em
 \vskip 2.5ex}{\par\vskip 2.5ex}
 
 
-\title{\heiti \zihao{3}  }
-\author{}
-\date{}
+\title{\heiti \zihao{3} ${1}}
+\author{${2}}
+\date{${3}}
 
 \begin{document}
 
@@ -286,8 +286,8 @@ framexleftmargin=2em
 \maketitle
 
 \begin{cnabstract}
-
-\par\textbf{关键字: }{}
+${4}
+\par\textbf{关键字: }{${5}}
 \end{cnabstract}
 
 % \begin{enabstract}
@@ -304,7 +304,7 @@ framexleftmargin=2em
 
 %\setcounter{page}{1}
 
-
+${6}
 
 \newpage
 
@@ -316,4 +316,56 @@ framexleftmargin=2em
 
 \end{thebibliography}
 \end{document}
+endsnippet
+
+
+snippet bib "bibitem"
+\bibitem{}${1}
+endsnippet
+
+snippet alg "algorithm"
+
+\makeatletter
+\def\BState{\State\hskip-\ALG@thistlm}
+\makeatother
+\begin{algorithm}[H]
+\caption{${1}}
+\begin{algorithmic}[1]
+\Require
+\Ensure
+
+\Function{ ${2} }{ ${3} }
+	\If { }
+		\Return
+	\ElsIf{ }
+		\Return { }
+	\Else \quad
+		\Return{ }
+	\EndIf
+\EndFunction
+\State{ }
+
+
+\end{algorithmic}
+\end{algorithm}
+endsnippet
+
+snippet table "latex-table"
+\begin{table}[H]
+\caption{${1}}
+\vspace{20pt}
+\centering
+\begin{tabular}{lllll}
+\hline
+\thead[c]{${2}} & \thead[c]{${3}}  & \thead[c]{${4}} \\
+\hline
+
+${5} & ${6} & ${7} \\
+${8} & ${9} & ${10} \\
+${10} & ${11} & ${12} \\
+
+\hline
+\end{tabular}
+\label{bs}
+\end{table}
 endsnippet
