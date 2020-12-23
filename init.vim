@@ -35,7 +35,7 @@ set autochdir
 " ===
 set number
 set relativenumber
-set cursorline
+"set cursorline
 set noexpandtab
 set tabstop=2
 set shiftwidth=2
@@ -383,8 +383,6 @@ endfunc
 
 call plug#begin('~/.config/nvim/plugged')
 
-" Testing my own plugin
-" Plug 'theniceboy/vim-calc'
 
 " Pretty Dress
 "Plug 'bpietravalle/vim-bolt'
@@ -394,7 +392,7 @@ call plug#begin('~/.config/nvim/plugged')
 Plug 'arzg/vim-colors-xcode'
 
 " Status line
-Plug 'theniceboy/eleline.vim'
+Plug 'vim-airline/vim-airline'
 Plug 'dylanaraps/wal'
 
 " General Highlighter
@@ -581,8 +579,8 @@ let $NVIM_TUI_ENABLE_TRUE_COLOR=1
 "set background=light
 "set cursorcolumn
 "let g:SnazzyTransparent = 1
-"colorscheme snazzy
-colorscheme wal
+colorscheme snazzy
+"colorscheme wal
 set background=dark
 
 hi NonText ctermfg=gray guifg=grey10
@@ -966,6 +964,8 @@ let maplocalleader=' '
 set conceallevel=1
 let g:tex_conceal='abdmg'
 hi Conceal ctermbg=none
+
+nmap <space>cc <plug>(vimtex-clean)
 
 "let g:vimtex_view_general_viewer
 "\ = '/Applications/Skim.app/Contents/SharedSupport/displayline'
