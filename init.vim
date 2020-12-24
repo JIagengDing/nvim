@@ -79,6 +79,7 @@ endif
 set colorcolumn=100
 set updatetime=1000
 set virtualedit=block
+set guicursor=i-ci:ver50-Cursor-blinkon0,n:blinkon0
 
 au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
 
@@ -584,6 +585,8 @@ colorscheme snazzy
 set background=dark
 
 hi NonText ctermfg=gray guifg=grey10
+hi CursorColumn ctermfg=White
+hi conceal cterm=bold ctermfg=15 ctermbg=235 gui=bold guifg=#F9F9F9 guibg=#192224 guisp=#192224
 "hi SpecialKey ctermfg=blue guifg=grey70
 
 " ===================== Start of Plugin Settings =====================
