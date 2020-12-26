@@ -161,7 +161,7 @@ vnoremap <LEADER>tt :s/    /\t/g
 noremap <silent> <LEADER>o za
 
 " Open up lazygit
-noremap \g :Git 
+noremap \g :Git
 "noremap <c-g> :tabe<CR>:-tabmove<CR>:term lazygit<CR>
 nnoremap <c-n> :tabe<CR>:-tabmove<CR>:term lazynpm<CR>
 
@@ -403,7 +403,7 @@ Plug 'RRethy/vim-illuminate'
 " File navigation
 "Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
 "Plug 'Xuyuanp/nerdtree-git-plugin'
-Plug 'junegunn/fzf.vim'
+Plug 'junegunn/fzf.vim', { 'do': { -> fzf#install() } }
 Plug 'kevinhwang91/rnvimr', {'do': 'make sync'}
 Plug 'airblade/vim-rooter'
 Plug 'pechorin/any-jump.vim'
@@ -436,8 +436,9 @@ Plug 'airblade/vim-gitgutter'
 Plug 'Chiel92/vim-autoformat'
 
 " Tex
-Plug 'lervag/vimtex'
-Plug   'KeitaNakamura/tex-conceal.vim', {'for': 'tex'}
+" Plug 'lervag/vimtex'
+Plug 'KeitaNakamura/tex-conceal.vim', {'for': 'tex'}
+Plug 'lervag/vimtex', {'tag': 'v1.6'}
 
 " CSharp
 Plug 'OmniSharp/omnisharp-vim'
@@ -486,7 +487,7 @@ Plug 'dkarter/bullets.vim'
 "Plug 'Raimondi/delimitMate'
 Plug 'jiangmiao/auto-pairs'
 Plug 'mg979/vim-visual-multi'
-Plug 'tomtom/tcomment_vim' " in <space>cn to comment a line
+" Plug 'tomtom/tcomment_vim' " in <space>cn to comment a line
 Plug 'theniceboy/antovim' " gs to switch
 Plug 'tpope/vim-surround' " type yskw' to wrap the word with '' or type cs'` to change 'word' to `word`
 Plug 'gcmt/wildfire.vim' " in Visual mode, type k' to select all text in '', or type k) k] k} kp
@@ -504,7 +505,7 @@ Plug 'chrisbra/NrrwRgn'
 Plug 'AndrewRadev/splitjoin.vim'
 
 " For general writing
-" Plug 'junegunn/goyo.vim'
+Plug 'junegunn/goyo.vim'
 "Plug 'reedes/vim-wordy'
 "Plug 'ron89/thesaurus_query.vim'
 
@@ -590,7 +591,8 @@ set background=dark
 
 hi NonText ctermfg=gray guifg=grey10
 hi CursorColumn ctermfg=White
-hi conceal cterm=bold ctermfg=15 ctermbg=235 gui=bold guifg=#F9F9F9 guibg=#192224 guisp=#192224
+hi conceal ctermfg=229 ctermbg=239 guifg=#F3F99D guibg=#282A36 guisp=#192224
+hi Visual ctermfg=248 guifg=#A1A6A8
 "hi SpecialKey ctermfg=blue guifg=grey70
 
 " ===================== Start of Plugin Settings =====================
@@ -1159,6 +1161,16 @@ let g:EasyMotion_smartcase = 1
 " === goyo
 " ===
 map <LEADER>gy :Goyo<CR>
+" Enable Goyo by default for mutt writing
+	autocmd BufRead,BufNewFile /tmp/neomutt* let g:goyo_width=100
+	let g:goyo_height=90
+	autocmd BufRead,BufNewFile /tmp/neomutt* :Goyo | set bg=light
+	autocmd BufRead,BufNewFile /tmp/neomutt* map ZZ :Goyo\|x!<CR>
+	autocmd BufRead,BufNewFile /tmp/neomutt* map ZQ :Goyo\|q!<CR>
+
+" Automatically deletes all trailing whitespace and newlines at end of file on save.
+	autocmd BufWritePre * %s/\s\+$//e
+	autocmd BufWritePre * %s/\n\+\%$//e
 
 
 " ===
@@ -1229,7 +1241,7 @@ noremap \p :XTabInfo<CR>
 "set sessionoptions-=options
 "noremap sl :OpenSession<CR>
 "noremap sS :SaveSession<CR>
-"noremap ss :SaveSession 
+"noremap ss :SaveSession
 "noremap sc :SaveSession<CR>:CloseSession<CR>:q<CR>
 "noremap so :OpenSession default<CR>
 "noremap sD :DeleteSession<CR>
@@ -1352,15 +1364,15 @@ let g:dart_format_on_save = 1
 let g:dartfmt_options = ["-l 100"]
 
 
-" ===
-" === tcomment_vim
-" ===
-nnoremap ci cl
-let g:tcomment_textobject_inlinecomment = ''
-nmap <LEADER>cn g>c
-vmap <LEADER>cn g>
-nmap <LEADER>cu g<c
-vmap <LEADER>cu g<
+" " ===
+" " === tcomment_vim
+" " ===
+" nnoremap ci cl
+" let g:tcomment_textobject_inlinecomment = ''
+" nmap <LEADER>cn g>c
+" vmap <LEADER>cn g>
+" nmap <LEADER>cu g<c
+" vmap <LEADER>cu g<
 
 
 " ===
@@ -1406,25 +1418,25 @@ endif
 let g:NERDSpaceDelims = 1
 " python 自动的会多加一个空格
 " au FileType python let g:NERDSpaceDelims = 0
- 
+
 " Use compact syntax for prettified multi-line comments
 let g:NERDCompactSexyComs = 1
- 
+
 " Align line-wise comment delimiters flush left instead of following code indentation
 let g:NERDDefaultAlign = 'left'
- 
+
 " Set a language to use its alternate delimiters by default
 let g:NERDAltDelims_java = 1
- 
+
 " Add your own custom formats or override the defaults
 " let g:NERDCustomDelimiters = { 'c': { 'left': '/**','right': '*/' } }
- 
+
 " Allow commenting and inverting empty lines (useful when commenting a region)
 let g:NERDCommentEmptyLines = 1
- 
+
 " Enable trimming of trailing whitespace when uncommenting
 let g:NERDTrimTrailingWhitespace = 1
- 
+
 " Enable NERDCommenterToggle to check all selected lines is commented or not
 let g:NERDToggleCheckAllLines = 1
 
