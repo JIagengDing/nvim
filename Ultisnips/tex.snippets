@@ -206,7 +206,6 @@ endglobal
 #######################
 
 snippet beg "my latex begin"
-
 %!TEX TS-program = xelatex
 %MacTex
 %Author：@JiagengDing
@@ -369,4 +368,20 @@ ${10} & ${11} & ${12} \\\\
 \end{tabular}
 \label{bs}
 \end{table}
+endsnippet
+
+snippet sec "mysection"
+\section{$1}
+$0
+endsnippet
+
+snippet sub "mysubsection"
+\subsection{$1}
+$0
+endsnippet
+
+
+snippet subs "mysubsubsection"
+\subsubsection{$1}
+$0
 endsnippet

@@ -16,7 +16,7 @@ if empty(glob('~/.config/nvim/_machine_specific.vim'))
 	let has_machine_specific_file = 0
 	silent! exec "!cp ~/.config/nvim/default_configs/_machine_specific_default.vim ~/.config/nvim/_machine_specific.vim"
 endif
-source /Users/JiagengDing/.config/nvim/_machine_specific.vim
+source ~/.config/nvim/_machine_specific.vim
 
 
 " ====================
@@ -139,7 +139,7 @@ noremap K I
 " make Y to copy till the end of the line
 nnoremap Y y$
 
-map * :PlugInstall
+map * :PlugInstall<CR>
 " Copy to system clipboard
 vnoremap Y "+y
 
@@ -361,8 +361,9 @@ func! CompileRunGcc()
 	elseif &filetype == 'markdown'
 		exec "MarkdownPreview"
 	elseif &filetype == 'tex'
-		silent! exec "VimtexStop"
-		silent! exec "VimtexCompile"
+		" silent! exec "VimtexStop"
+		" silent! exec "VimtexCompile"
+		:term latexmk -xelatex
 	elseif &filetype == 'dart'
 		exec "CocCommand flutter.run -d ".g:flutter_default_device
 		CocCommand flutter.dev.openDevLog
@@ -552,6 +553,11 @@ Plug 'connorholyday/vim-snazzy'
 "commenter
 Plug 'preservim/nerdcommenter'
 
+" for R and R markdown
+Plug 'jalvesaq/Nvim-R', {'branch': 'stable', 'for': ['r','rmd']}
+Plug 'mechatroner/rainbow_csv', {'for': ['csv', 'dat']}
+Plug 'rafaqz/citation.vim', {'for': ['md', 'rmd']}
+
 
 call plug#end()
 set re=0
@@ -597,6 +603,15 @@ hi Visual ctermfg=248 guifg=#A1A6A8
 
 " ===================== Start of Plugin Settings =====================
 
+"zotero
+let g:citation_vim_mode="zotero"
+let g:citation_vim_zotero_path="~/Zotero"
+let g:citation_vim_zotero_version=5
+
+"csv
+"
+autocmd BufNewFile,BufRead *.csv   set filetype=csv_semicolon
+autocmd BufNewFile,BufRead *.dat   set filetype=csv_pipe
 
 " ===
 " === eleline.vim
@@ -989,6 +1004,16 @@ let g:tex_flavor = "xelatex"
 " ===
 "let g:vimtex_view_method = ''
 "let g:vimtex_view_general_viewer = 'llpp'
+let g:vimtex_compiler_latexmk = {
+    \ 'options' : [
+    \   '-xelatex',
+    \   '-verbose',
+    \   '-file-line-error',
+    \   '-synctex=1',
+    \   '-interaction=nonstopmode',
+    \ ],
+    \}
+
 let g:vimtex_mappings_enabled = 0
 let g:vimtex_text_obj_enabled = 0
 let g:vimtex_motion_enabled = 0
@@ -997,7 +1022,7 @@ set conceallevel=1
 let g:tex_conceal='abdmg'
 hi Conceal ctermbg=none
 
-nmap <space>cc <plug>(vimtex-clean)
+" nmap <space>cc <plug>(vimtex-clean)
 
 "let g:vimtex_view_general_viewer
 "\ = '/Applications/Skim.app/Contents/SharedSupport/displayline'
@@ -1443,3 +1468,7 @@ let g:NERDToggleCheckAllLines = 1
 "mapping
 map <LEADER>tt <plug>NERDCommenterComment
 map <LEADER>nn <plug>NERDCommenterUncomment
+
+" Swap files are necessary when crash recovery
+if !isdirectory($HOME . "/.vim/swapfiles") | call mkdir($HOME . "/.vim/swapfiles", "p") | endif
+set dir=$HOME/.config/nvim/swapfiles//
