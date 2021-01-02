@@ -361,9 +361,11 @@ func! CompileRunGcc()
 	elseif &filetype == 'markdown'
 		exec "MarkdownPreview"
 	elseif &filetype == 'tex'
-		" silent! exec "VimtexStop"
-		" silent! exec "VimtexCompile"
-		:term latexmk -xelatex
+		silent! exec "VimtexStop"
+		silent! exec "VimtexCompile"
+		" set splitbelow
+		" :sp
+		" :term latexmk -xelatex
 	elseif &filetype == 'dart'
 		exec "CocCommand flutter.run -d ".g:flutter_default_device
 		CocCommand flutter.dev.openDevLog
@@ -555,7 +557,7 @@ Plug 'preservim/nerdcommenter'
 
 " for R and R markdown
 Plug 'jalvesaq/Nvim-R', {'branch': 'stable', 'for': ['r','rmd']}
-Plug 'mechatroner/rainbow_csv', {'for': ['csv', 'dat']}
+Plug 'mechatroner/rainbow_csv', "{'for': ['csv', 'dat']}
 Plug 'rafaqz/citation.vim', {'for': ['md', 'rmd']}
 
 
@@ -1003,17 +1005,18 @@ let g:tex_flavor = "xelatex"
 " === vimtex
 " ===
 "let g:vimtex_view_method = ''
-"let g:vimtex_view_general_viewer = 'llpp'
+let g:vimtex_compiler_progname = 'nvr'
+let g:vimtex_view_general_viewer = 'skim'
+let g:vimtex_compiler_engine='xelatex'
 let g:vimtex_compiler_latexmk = {
-    \ 'options' : [
-    \   '-xelatex',
-    \   '-verbose',
-    \   '-file-line-error',
-    \   '-synctex=1',
-    \   '-interaction=nonstopmode',
-    \ ],
-    \}
-
+				\ 'executable' : 'latexmk',
+				\ 'options' : [
+				\   '-shell-escape',
+				\   '-file-line-error',
+				\   '-synctex=1',
+				\   '-interaction=nonstopmode',
+				\ ],
+				\}
 let g:vimtex_mappings_enabled = 0
 let g:vimtex_text_obj_enabled = 0
 let g:vimtex_motion_enabled = 0

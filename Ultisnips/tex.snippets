@@ -32,7 +32,7 @@ snippet today "Date"
 `date +%F`
 endsnippet
 
-snippet box "Box"
+snippet box "myBox"
 `!p snip.rv = '┌' + '─' * (len(t[1]) + 2) + '┐'`
 │ $1 │
 `!p snip.rv = '└' + '─' * (len(t[1]) + 2) + '┘'`
@@ -208,8 +208,8 @@ endglobal
 snippet beg "my latex begin"
 %!TEX TS-program = xelatex
 %MacTex
-%Author：@JiagengDing
-%Mail:   @JiagengDing@gmail.com
+%@Author：JiagengDing
+%@Mail:   JiagengDing@gmail.com
 
 \documentclass[a4paper,12pt,UTF8]{ctexart}%A4纸，小四号字
 \usepackage{ctex}
@@ -222,6 +222,9 @@ snippet beg "my latex begin"
 \usepackage{graphicx}
 \usepackage{float}
 \usepackage{subfigure}
+
+\usepackage{mdframed}
+\catcode`\┘=\active \catcode`\┌=\active \def ┌{\begin{mdframed}\centering} \def ┘{\end{mdframed}}%
 
 \usepackage[top=2.5cm,bottom=2cm,left=2.5cm,right=2cm,headheight=1.5cm]{geometry}
 \usepackage{lastpage} %总页数
@@ -242,21 +245,21 @@ snippet beg "my latex begin"
 
 \setlength{\parindent}{2em}
 \usepackage{fontspec, xunicode, xltxtra}
-\usepackage{listings}%导入代码块包
 \usepackage{xcolor}
 \usepackage{makecell}%处理表格宏包
 
-\lstset{
-numbers=left,
-numberstyle= \tiny,
-keywordstyle= \color{ blue!70},
-commentstyle= \color{red!50!green!50!blue!50},
-frame=shadowbox, % 阴影效果
-rulesepcolor= \color{ red!20!green!20!blue!20},
-escapeinside=``, % 英文分号中可写入中文
-xleftmargin=2em,xrightmargin=2em, aboveskip=1em,
-framexleftmargin=2em
-} %修改代码显示效果
+% \usepackage{listings}%导入代码块包
+% \lstset{
+% numbers=left,
+% numberstyle= \tiny,
+% keywordstyle= \color{ blue!70},
+% commentstyle= \color{red!50!green!50!blue!50},
+% frame=shadowbox, % 阴影效果
+% rulesepcolor= \color{ red!20!green!20!blue!20},
+% escapeinside=``, % 英文分号中可写入中文
+% xleftmargin=2em,xrightmargin=2em, aboveskip=1em,
+% framexleftmargin=2em
+% } %修改代码显示效果
 
 \newcommand{\enabstractname}{Abstract}
 \newcommand{\cnabstractname}{摘要}
