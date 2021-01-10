@@ -334,6 +334,11 @@ map <F10> :echo "hi<" . synIDattr(synID(line("."),col("."),1),"name") . '> trans
 \ . synIDattr(synID(line("."),col("."),0),"name") . "> lo<"
 \ . synIDattr(synIDtrans(synID(line("."),col("."),1)),"name") . ">"<CR>
 
+"for vim-matlab
+function! DoRemote(arg)
+  UpdateRemotePlugins
+endfunction
+
 " Compile function
 noremap r :call CompileRunGcc()<CR>
 func! CompileRunGcc()
@@ -559,6 +564,9 @@ Plug 'preservim/nerdcommenter'
 Plug 'jalvesaq/Nvim-R', {'branch': 'stable', 'for': ['r','rmd']}
 Plug 'mechatroner/rainbow_csv', "{'for': ['csv', 'dat']}
 Plug 'rafaqz/citation.vim', {'for': ['md', 'rmd']}
+
+"matlab
+Plug 'daeyun/vim-matlab', { 'do': function('DoRemote') , 'for': ['m']}
 
 
 call plug#end()
