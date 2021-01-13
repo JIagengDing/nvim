@@ -308,7 +308,7 @@ noremap <LEADER><LEADER> <Esc>/<++><CR>:nohlsearch<CR>c4l
 
 " Spelling Check with <space>sc
 setlocal spell
-set spelllang=nl,en_gb
+set spelllang=en_gb
 inoremap <C-l> <c-g>u<Esc>[s1z=`]a<c-g>u
 "noremap <LEADER>sc :set spell!<CR>
 
