@@ -382,6 +382,9 @@ func! CompileRunGcc()
 		set splitbelow
 		:sp
 		:term go run .
+	elseif &filetype == 'rust'
+		exec "RustRun"
+
 	endif
 endfunc
 
@@ -567,6 +570,8 @@ Plug 'rafaqz/citation.vim', {'for': ['md', 'rmd']}
 
 "matlab
 Plug 'daeyun/vim-matlab', { 'do': function('DoRemote') , 'for': ['m']}
+
+Plug 'rust-lang/rust.vim'
 
 
 call plug#end()
