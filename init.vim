@@ -682,9 +682,9 @@ let g:coc_global_extensions = [
   \ 'coc-tslint-plugin',
   \ 'coc-tsserver',
   \ 'coc-vimlsp',
-  \ 'coc-vimlsp',
   \ 'coc-yaml',
   \ 'coc-yank',
+	\ 'coc-rls',
 	\ 'coc-marketplace']
 
 
