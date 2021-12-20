@@ -348,10 +348,12 @@ func! CompileRunGcc()
 		exec "!time ./%<"
 	elseif &filetype == 'cpp'
 		set splitbelow
-		exec "!g++ -std=c++11 % -Wall -o %<"
+		" exec "!g++ -std=c++11 % -Wall -o %<"
+		exec "!c++ % -o %<"
 		:sp
 		:res -15
-		:term ./%<
+		:exec "!time ./%<"
+		" :term ./%<
 	elseif &filetype == 'java'
 		exec "!javac %"
 		exec "!time java %<"
@@ -415,7 +417,7 @@ Plug 'RRethy/vim-illuminate'
 "Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
 "Plug 'Xuyuanp/nerdtree-git-plugin'
 Plug 'junegunn/fzf.vim', { 'do': { -> fzf#install() } }
-Plug 'kevinhwang91/rnvimr', {'do': 'make sync'}
+Plug 'kevinhwang91/rnvimr', "{'do': 'make sync'}
 Plug 'airblade/vim-rooter'
 Plug 'pechorin/any-jump.vim'
 
@@ -571,8 +573,9 @@ Plug 'rafaqz/citation.vim', {'for': ['md', 'rmd']}
 "matlab
 Plug 'daeyun/vim-matlab', { 'do': function('DoRemote') , 'for': ['m']}
 
-Plug 'rust-lang/rust.vim'
+" Plug 'rust-lang/rust.vim'
 
+Plug 'cespare/vim-toml', {'for': ['toml']}
 
 call plug#end()
 set re=0
