@@ -485,7 +485,7 @@ Plug 'tweekmonster/braceless.vim', { 'for' :['python', 'vim-plug'] }
 Plug 'theniceboy/dart-vim-plugin'
 
 " Swift
-Plug 'keith/swift.vim'
+" Plug 'keith/swift.vim'
 
 " Markdown
 Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install_sync() }, 'for' :['markdown', 'vim-plug'] }
@@ -577,7 +577,10 @@ Plug 'daeyun/vim-matlab', { 'do': function('DoRemote') , 'for': ['m']}
 
 Plug 'cespare/vim-toml', {'for': ['toml']}
 
+Plug 'JiagengDing/toggle_words.vim',
+
 call plug#end()
+nnoremap <LEADER>m :ToggleWord<CR>
 set re=0
 
 " experimental
