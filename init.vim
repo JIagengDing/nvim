@@ -203,7 +203,7 @@ noremap <C-U> 5<C-y>
 noremap <C-E> 5<C-e>
 
 
-source $XDG_CONFIG_HOME/Users/JiagengDing/.config/nvim/cursor.vim
+source $HOME/.config/nvim/cursor.vim
 
 " ===
 " === Insert Mode Cursor Movement
@@ -286,7 +286,7 @@ noremap tmi :+tabmove<CR>
 " === Markdown Settings
 " ===
 " Snippets
-source $XDG_CONFIG_HOME/Users/JiagengDing/.config/nvim/md-snippets.vim
+source $HOME/.config/nvim/md-snippets.vim
 " auto spell
 autocmd BufRead,BufNewFile *.md setlocal spell
 
