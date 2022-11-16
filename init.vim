@@ -366,7 +366,7 @@ func! CompileRunGcc()
 	elseif &filetype == 'html'
 		silent! exec "!".g:mkdp_browser." % &"
 	elseif &filetype == 'markdown'
-		exec "MarkdownPreview"
+		exec "InstantMarkdownPreview"
 	elseif &filetype == 'tex'
 		silent! exec "VimtexStop"
 		silent! exec "VimtexCompile"
@@ -488,7 +488,7 @@ Plug 'theniceboy/dart-vim-plugin'
 " Plug 'keith/swift.vim'
 
 " Markdown
-Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install_sync() }, 'for' :['markdown', 'vim-plug'] }
+Plug 'instant-markdown/vim-instant-markdown', {'for': 'markdown', 'do': 'yarn install'}
 Plug 'dhruvasagar/vim-table-mode', { 'on': 'TableModeToggle', 'for': ['text', 'markdown', 'vim-plug'] }
 Plug 'mzlogin/vim-markdown-toc', { 'for': ['gitignore', 'markdown', 'vim-plug'] }
 Plug 'dkarter/bullets.vim'
@@ -790,29 +790,15 @@ nmap <silent> <LEADER>= <Plug>(coc-diagnostic-next)
 
 
 " ===
-" === MarkdownPreview
+" === vim-instant-markdown
 " ===
-let g:mkdp_auto_start = 0
-let g:mkdp_auto_close = 1
-let g:mkdp_refresh_slow = 0
-let g:mkdp_command_for_global = 0
-let g:mkdp_open_to_the_world = 0
-let g:mkdp_open_ip = ''
-let g:mkdp_echo_preview_url = 0
-let g:mkdp_browserfunc = ''
-let g:mkdp_preview_options = {
-			\ 'mkit': {},
-			\ 'katex': {},
-			\ 'uml': {},
-			\ 'maid': {},
-			\ 'disable_sync_scroll': 0,
-			\ 'sync_scroll_type': 'middle',
-			\ 'hide_yaml_meta': 1
-			\ }
-let g:mkdp_markdown_css = ''
-let g:mkdp_highlight_css = ''
-let g:mkdp_port = ''
-let g:mkdp_page_title = '「${name}」'
+let g:instant_markdown_slow = 0
+let g:instant_markdown_autostart = 0
+" let g:instant_markdown_open_to_the_world = 1
+" let g:instant_markdown_allow_unsafe_content = 1
+" let g:instant_markdown_allow_external_content = 0
+let g:instant_markdown_mathjax = 1
+let g:instant_markdown_autoscroll = 1
 
 
 " ===
@@ -1495,9 +1481,3 @@ map <LEADER>nn <plug>NERDCommenterUncomment
 " Swap files are necessary when crash recovery
 if !isdirectory($HOME . "/.vim/swapfiles") | call mkdir($HOME . "/.vim/swapfiles", "p") | endif
 set dir=$HOME/.config/nvim/swapfiles//
-
-# fcitx5
-autocmd InsertLeave * :silent !fcitx5-remote -c " 退出插入模式时禁用输入法
-autocmd BufCreate *  :silent !fcitx5-remote -c " 创建 Buf 时禁用输入法
-autocmd BufEnter *  :silent !fcitx5-remote -c " 进入 Buf 时禁用输入法
-autocmd BufLeave *  :silent !fcitx5-remote -c " 离开 Buf 时禁用输入法
