@@ -34,7 +34,7 @@ set autochdir
 " === Editor behavior
 " ===
 set number
-set relativenumber
+" set relativenumber
 set cursorline
 set noexpandtab
 set tabstop=2
@@ -578,6 +578,9 @@ Plug 'daeyun/vim-matlab', { 'do': function('DoRemote') , 'for': ['m']}
 Plug 'cespare/vim-toml', {'for': ['toml']}
 
 Plug 'JiagengDing/toggle_words.vim',
+
+Plug 'nvim-treesitter/nvim-treesitter'
+Plug 'nvim-orgmode/orgmode'
 
 call plug#end()
 nnoremap <LEADER>m :ToggleWord<CR>
@@ -1481,3 +1484,26 @@ map <LEADER>nn <plug>NERDCommenterUncomment
 " Swap files are necessary when crash recovery
 if !isdirectory($HOME . "/.vim/swapfiles") | call mkdir($HOME . "/.vim/swapfiles", "p") | endif
 set dir=$HOME/.config/nvim/swapfiles//
+
+" ======== org-mode =======
+" init.vim
+lua << EOF
+
+-- Load custom tree-sitter grammar for org filetype
+require('orgmode').setup_ts_grammar()
+
+-- Tree-sitter configuration
+require'nvim-treesitter.configs'.setup {
+  -- If TS highlights are not enabled at all, or disabled via `disable` prop, highlighting will fallback to default Vim syntax highlighting
+  highlight = {
+    enable = true,
+    additional_vim_regex_highlighting = {'org'}, -- Required for spellcheck, some LaTex highlights and code block highlights that do not have ts grammar
+  },
+  ensure_installed = {'org'}, -- Or run :TSUpdate org
+}
+
+require('orgmode').setup({
+  org_agenda_files = {'~/Dropbox/org/*', '~/my-orgs/**/*'},
+  org_default_notes_file = '~/Dropbox/org/refile.org',
+})
+EOF
