@@ -308,7 +308,7 @@ noremap <LEADER><LEADER> <Esc>/<++><CR>:nohlsearch<CR>c4l
 
 " Spelling Check with <space>sc
 setlocal spell
-set spelllang=en_gb
+set spelllang=en_us
 inoremap <C-l> <c-g>u<Esc>[s1z=`]a<c-g>u
 "noremap <LEADER>sc :set spell!<CR>
 
@@ -449,9 +449,8 @@ Plug 'airblade/vim-gitgutter'
 Plug 'Chiel92/vim-autoformat'
 
 " Tex
-" Plug 'lervag/vimtex'
 Plug 'KeitaNakamura/tex-conceal.vim', {'for': 'tex'}
-Plug 'lervag/vimtex', {'tag': 'v1.6'}
+Plug 'lervag/vimtex', {'for': 'tex'}
 
 " CSharp
 Plug 'OmniSharp/omnisharp-vim'
@@ -571,7 +570,7 @@ Plug 'mechatroner/rainbow_csv', "{'for': ['csv', 'dat']}
 Plug 'rafaqz/citation.vim', {'for': ['md', 'rmd']}
 
 "matlab
-Plug 'daeyun/vim-matlab', { 'do': function('DoRemote') , 'for': ['m']}
+" Plug 'daeyun/vim-matlab', { 'do': function('DoRemote') , 'for': ['m']}
 
 " Plug 'rust-lang/rust.vim'
 
@@ -1015,7 +1014,8 @@ let g:tex_flavor = "xelatex"
 " ===
 "let g:vimtex_view_method = ''
 let g:vimtex_compiler_progname = 'nvr'
-let g:vimtex_view_general_viewer = 'skim'
+let g:vimtex_view_general_viewer = 'zathura'
+let g:vimtex_view_method = 'zathura'
 let g:vimtex_compiler_engine='xelatex'
 let g:vimtex_compiler_latexmk = {
 				\ 'executable' : 'latexmk',
@@ -1029,6 +1029,7 @@ let g:vimtex_compiler_latexmk = {
 let g:vimtex_mappings_enabled = 0
 let g:vimtex_text_obj_enabled = 0
 let g:vimtex_motion_enabled = 0
+let g:vimtex_quickfix_mode = 0
 let maplocalleader=' '
 set conceallevel=1
 let g:tex_conceal='abdmg'
