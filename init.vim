@@ -308,7 +308,7 @@ noremap <LEADER><LEADER> <Esc>/<++><CR>:nohlsearch<CR>c4l
 
 " Spelling Check with <space>sc
 setlocal spell
-set spelllang=en_us
+set spelllang=en_gb
 inoremap <C-l> <c-g>u<Esc>[s1z=`]a<c-g>u
 "noremap <LEADER>sc :set spell!<CR>
 
@@ -692,7 +692,6 @@ let g:coc_global_extensions = [
   \ 'coc-vimlsp',
   \ 'coc-yaml',
   \ 'coc-yank',
-	\ 'coc-rls',
 	\ 'coc-lua',
 	\ 'coc-marketplace']
 

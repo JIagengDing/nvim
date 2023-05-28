@@ -76,6 +76,7 @@
 		"cpp",
 		"cs",
 		"racket",
+		"rust",
 		"prisma",
 		"dart",
 		"terraform"
@@ -203,6 +204,7 @@
 		"elixir": "mix_format",
 		"eelixir": "mix_format"
 	},
+	"workspace.ignoredFolders": ["$HOME", "$HOME/.cargo/**", "$HOME/.rustup/**"],
 	"languageserver": {
 		"lua": {
 			"command": "lua-lsp",
