@@ -62,6 +62,7 @@
 	],
 	"coc.preferences.formatOnSaveFiletypes": [
 		"javascript",
+		"jsx",
 		"typescript",
 		"typescriptreact",
 		"html",
