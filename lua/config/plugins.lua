@@ -14,11 +14,11 @@ vim.opt.rtp:prepend(lazypath)
 local lazy_cmd = require("lazy.view.config").commands
 local lazy_keys = {
 	{ cmd = "install", key = "i" },
-	{ cmd = "update", key = "u" },
-	{ cmd = "sync", key = "s" },
-	{ cmd = "clean", key = "cl" },
-	{ cmd = "check", key = "ch" },
-	{ cmd = "log", key = "l" },
+	{ cmd = "update",  key = "u" },
+	{ cmd = "sync",    key = "s" },
+	{ cmd = "clean",   key = "cl" },
+	{ cmd = "check",   key = "ch" },
+	{ cmd = "log",     key = "l" },
 	{ cmd = "restore", key = "rs" },
 	{ cmd = "profile", key = "p" },
 	{ cmd = "profile", key = "p" },
@@ -32,15 +32,17 @@ vim.keymap.set("n", "<leader>pl", ":Lazy<CR>", { noremap = true })
 require("lazy").setup({
 	spec = {
 		-- add LazyVim and import its plugins
-		--  { "LazyVim/LazyVim", import = "" },
---		  {"akinsho/bufferline.nvim", version = "*", dependencies = "nvim-tree/nvim-web-devicons"},
+		-- { "LazyVim/LazyVim", import = "lazyvim.plugins.extras.formatting.prettier" },
+		--		  {"akinsho/bufferline.nvim", version = "*", dependencies = "nvim-tree/nvim-web-devicons"},
 		-- import any extras modules here
 		-- { import = "lazyvim.plugins.extras.lang.typescript" },
 		-- { import = "lazyvim.plugins.extras.lang.json" },
 		-- { import = "lazyvim.plugins.extras.ui.mini-animate" },
 		-- import/override with your plugins
-	    { import = "plugins" },
-			{ "dstein64/vim-startuptime" },
+		-- { import = "lazyvim.plugins.extras.linting.eslint" },
+		{ import = "plugins" },
+		{ "dstein64/vim-startuptime" },
+		require("plugins_.autocomplete").config,
 	},
 	defaults = {
 		-- By default, only LazyVim plugins will be lazy-loaded. Your custom plugins will load during startup.
@@ -69,4 +71,3 @@ require("lazy").setup({
 		},
 	},
 })
-
