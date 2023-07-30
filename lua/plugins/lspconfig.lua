@@ -95,7 +95,7 @@ F.configureKeybinds = function()
 			vim.keymap.set('n', "<leader>,", vim.lsp.buf.code_action, opts)
 			-- vim.keymap.set('x', '<leader>aw', vim.lsp.buf.range_code_action, opts)
 			-- vim.keymap.set('x', "<leader>,", vim.lsp.buf.range_code_action, opts)
-			vim.keymap.set('n', '<leader>t', ':Trouble<cr>', opts)
+			-- vim.keymap.set('n', '<leader>t', ':Trouble<cr>', opts)
 			vim.keymap.set('n', '<leader>-', vim.diagnostic.goto_prev, opts)
 			vim.keymap.set('n', '<leader>=', vim.diagnostic.goto_next, opts)
 		end
@@ -156,6 +156,8 @@ M.config = {
 				'gopls',
 				'jsonls',
 				'pylsp',
+				"html",
+				"bashls",
 			})
 
 			-- F.configureInlayHints()

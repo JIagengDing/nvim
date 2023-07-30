@@ -76,6 +76,8 @@ local nmappings = {
 	-- Other
 	{ from = "<leader>sw",    to = ":set wrap<CR>" },
 	{ from = "<leader><CR>",  to = ":nohlsearch<CR>" },
+	{ from = "-",             to = "N" },
+	{ from = "=",             to = "n" },
 	{ from = "<f10>",         to = ":TSHighlightCapturesUnderCursor<CR>" },
 	{ from = "<leader>o",     to = "za" },
 	{ from = "<leader>pr",    to = ":profile start profile.log<CR>:profile func *<CR>:profile file *<CR>" },
@@ -86,6 +88,7 @@ local nmappings = {
 
 	-- Joshuto
 	{ from = "R",             to = ":Joshuto<CR>" },
+
 }
 
 for _, mapping in ipairs(nmappings) do
