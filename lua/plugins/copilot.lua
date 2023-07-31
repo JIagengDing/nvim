@@ -1,6 +1,7 @@
 return {
 	{
 		"github/copilot.vim",
+		event = "BufRead",
 		config = function()
 			vim.g.copilot_enabled = true
 			vim.g.copilot_no_tab_map = true

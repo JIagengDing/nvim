@@ -1,6 +1,7 @@
 return {
 	{
 		"shellRaining/hlchunk.nvim",
+		event = "BufRead",
 		init = function()
 			vim.api.nvim_create_autocmd({ "CursorMoved", "CursorMovedI" }, { pattern = "*", command = "EnableHL", })
 			require('hlchunk').setup({

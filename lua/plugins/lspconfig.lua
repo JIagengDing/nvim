@@ -103,13 +103,17 @@ F.configureKeybinds = function()
 end
 
 M.config = {
-	{ "mfussenegger/nvim-dap" },
+	{
+		"mfussenegger/nvim-dap",
+		event = "BufReadPre",
+	},
 	{
 		'weilbith/nvim-code-action-menu',
 		cmd = 'CodeActionMenu',
 	},
 	{
 		'VonHeikemen/lsp-zero.nvim',
+		event = "BufReadPre",
 		branch = 'v2.x',
 		dependencies = {
 			{
@@ -131,7 +135,10 @@ M.config = {
 				end,
 			},
 			{ 'williamboman/mason-lspconfig.nvim' },
-			{ 'hrsh7th/cmp-nvim-lsp' },
+			{
+				'hrsh7th/cmp-nvim-lsp',
+				event = "InsertEnter",
+			},
 			{
 				'j-hui/fidget.nvim',
 				tag = "legacy"

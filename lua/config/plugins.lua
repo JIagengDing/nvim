@@ -41,7 +41,6 @@ require("lazy").setup({
 		-- import/override with your plugins
 		-- { import = "lazyvim.plugins.extras.linting.eslint" },
 		{ import = "plugins" },
-		{ "dstein64/vim-startuptime" },
 		require("plugins_.autocomplete").config,
 	},
 	defaults = {

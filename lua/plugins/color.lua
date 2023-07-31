@@ -1,6 +1,7 @@
 return {
 	{
 		"RRethy/vim-illuminate",
+		event = "BufRead",
 		config = function()
 			require('illuminate').configure({
 				providers = {
@@ -12,8 +13,9 @@ return {
 			vim.cmd("hi IlluminatedWordText guibg=#393E4D gui=none")
 		end
 	},
-		{
+	{
 		"NvChad/nvim-colorizer.lua",
+		event = "BufRead",
 		opts = {
 			filetypes = { "*" },
 			user_default_options = {

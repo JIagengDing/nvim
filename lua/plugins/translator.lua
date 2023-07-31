@@ -1,6 +1,7 @@
 return {
 	{
 		'voldikss/vim-translator',
+		event = 'BufRead',
 		config = function()
 			vim.cmd [[
 				nnoremap <silent> ts :TranslateW<CR>
