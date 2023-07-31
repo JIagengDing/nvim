@@ -11,7 +11,7 @@ local compileRun = function()
 		split()
 		vim.cmd("term python3 %")
 	elseif ft == "markdown" then
-		vim.cmd(":InstantMarkdownPreview<CR>")
+		vim.cmd(":InstantMarkdownPreview")
 	elseif ft == 'lua' then
 		split()
 		vim.cmd("term luajit %")

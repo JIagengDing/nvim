@@ -6,5 +6,6 @@ plugged/
 sessions/
 autoload/
 tmp/
+swapfiles/
 .netrwhist
 .vim-bookmarks
