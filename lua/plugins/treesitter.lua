@@ -13,8 +13,6 @@ return {
 		opts = {
 			ensure_installed = {
 				"bash",
-				"c",
-				"cmake",
 				-- "comment", -- comments are slowing down TS bigtime, so disable for now
 				"cpp",
 				"diff",
@@ -24,7 +22,6 @@ return {
 				"javascript",
 				"lua",
 				"markdown",
-				"markdown_inline",
 				"python",
 				"regex",
 				"rust",
@@ -33,7 +30,6 @@ return {
 				"tsx",
 				"typescript",
 				"vim",
-				"vimdoc",
 				"vue",
 				"yaml",
 				-- "wgsl",
