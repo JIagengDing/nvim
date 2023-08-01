@@ -1,8 +1,9 @@
 return {
 	{
 		"shellRaining/hlchunk.nvim",
+		-- enable = false,
 		event = "BufRead",
-		init = function()
+		config = function()
 			vim.api.nvim_create_autocmd({ "CursorMoved", "CursorMovedI" }, { pattern = "*", command = "EnableHL", })
 			require('hlchunk').setup({
 				chunk = {
@@ -31,6 +32,7 @@ return {
 				-- 	},
 				-- },
 				indent = {
+					enable = true,
 					chars = { "│", "¦", "┆", "┊", },
 					use_treesitter = true,
 					-- exclude_filetypes = {

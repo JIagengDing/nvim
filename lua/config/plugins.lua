@@ -21,7 +21,6 @@ local lazy_keys = {
 	{ cmd = "log",     key = "l" },
 	{ cmd = "restore", key = "rs" },
 	{ cmd = "profile", key = "p" },
-	{ cmd = "profile", key = "p" },
 }
 for _, v in ipairs(lazy_keys) do
 	lazy_cmd[v.cmd].key = "<SPC>" .. v.key
@@ -44,20 +43,41 @@ require("lazy").setup({
 		-- version = "*", -- try installing the latest stable version for plugins that support semver
 	},
 	-- install = { colorscheme = { "tokyonight", "habamax" } },
-	checker = { enabled = false }, -- automatically check for plugin updates
+	checker = { enabled = true }, -- automatically check for plugin updates
 	performance = {
+		cache = {
+			enabled = true,
+			-- disable_events = {},
+		},
 		rtp = {
 			-- disable some rtp plugins
 			disabled_plugins = {
 				"gzip",
 				-- "matchit",
 				-- "matchparen",
-				-- "netrwPlugin",
+				"netrwPlugin",
 				"tarPlugin",
 				"tohtml",
 				"tutor",
 				"zipPlugin",
 			},
 		},
+	},
+	-- lazy can generate helptags from the headings in markdown readme files,
+	-- so :help works even for plugins that don't have vim docs.
+	-- when the readme opens with :help it will be correctly displayed as markdown
+	readme = {
+		enabled = true,
+		root = vim.fn.stdpath("state") .. "/lazy/readme",
+		files = { "README.md", "lua/**/README.md" },
+		-- only generate markdown helptags for plugins that dont have docs
+		skip_if_doc_exists = true,
+	},
+	state = vim.fn.stdpath("state") .. "/lazy/state.json", -- state info for checker and other things
+	build = {
+		-- Plugins can provide a `build.lua` file that will be executed when the plugin is installed
+		-- or updated. When the plugin spec also has a `build` command, the plugin's `build.lua` not be
+		-- executed. In this case, a warning message will be shown.
+		warn_on_override = true,
 	},
 })

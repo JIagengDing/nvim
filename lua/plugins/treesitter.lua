@@ -1,15 +1,21 @@
 return {
-	{ "nvim-treesitter/playground", cmd = "TSPlaygroundToggle" },
+	{
+		"nvim-treesitter/playground",
+		cmd = "TSPlaygroundToggle"
+	},
 
 	{
 		"nvim-treesitter/nvim-treesitter-context",
 		event = "BufReadPre",
-		enabled = true,
 		opts = { mode = "cursor" },
 	},
 
 	{
 		"nvim-treesitter/nvim-treesitter",
+		event = "BufRead",
+		dependencies = {
+			{ "windwp/nvim-ts-autotag", opts = {} },
+		},
 		opts = {
 			ensure_installed = {
 				"bash",
@@ -62,12 +68,7 @@ return {
 					show_help = "?",
 				},
 			},
-		},
-	},
-	{
-		"nvim-treesitter/nvim-treesitter",
-		dependencies = {
-			{ "windwp/nvim-ts-autotag", opts = {} },
+			indent = { enable = false },
 		},
 	},
 }

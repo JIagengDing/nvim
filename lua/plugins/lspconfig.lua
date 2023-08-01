@@ -43,7 +43,7 @@ F.configureDocAndSignature = function()
 	vim.api.nvim_create_autocmd({ "CursorHold" }, {
 		pattern = "*",
 		callback = function()
-			vim.diagnostic.open_float(0, {
+			vim.diagnostic.open_float(nil, {
 				scope = "cursor",
 				focusable = false,
 				close_events = {

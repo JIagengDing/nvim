@@ -12,7 +12,7 @@ return {
 	keys = {
 		{ "<leader>fe", "<cmd>Neotree toggle<cr>", desc = "NeoTree" },
 	},
-	version = "v3.x",
+	branch = "v3.x",
 	dependencies = {
 		"nvim-lua/plenary.nvim",
 		"nvim-tree/nvim-web-devicons", -- not strictly required, but recommended
@@ -125,7 +125,7 @@ return {
 			commands = {},
 			window = {
 				position = "left",
-				width = 40,
+				width = 30,
 				mapping_options = {
 					noremap = true,
 					nowait = true,
