@@ -13,6 +13,7 @@ return {
 	{
 		"nvim-treesitter/nvim-treesitter",
 		event = "BufRead",
+		enabled = true,
 		dependencies = {
 			{ "windwp/nvim-ts-autotag", opts = {} },
 		},
