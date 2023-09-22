@@ -21,6 +21,11 @@ local compileRun = function()
 		split()
 		vim.cmd("term c++ % -o %<")
 		vim.cmd("term time ./%<")
+	elseif ft == 'html' then
+		split()
+		vim.cmd("term brave %")
+	elseif ft == 'tex' then
+		vim.cmd(":VimtexCompile")
 	end
 end
 
